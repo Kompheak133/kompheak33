@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Click As Fast As You Can!</h2>
+<p id="score">Score: 0</p>
+<p id = "timer">timer: 10</p>
+<button onclick="addClick()">Click Me!</button>
+<p id="message"></p>
+
+<script>
+let score =0;
+let gameOver = false;
+function addClick(){
+if(!gameOver){
+score++;
+document.getElementById("score").innerText="Score"+score;
+//move button
+let button = document.querySelector("button");
+button.style.position = "absolute";
+button.style.left = Math.random() * 300 + "px";
+button.style.top = Math.random() * 300 + "px";
+  }
+}
+setTimeout(function(){
+gameOver = true;
+document.getElementById("message").innerText="Time's up! Your score was:"+score;
+},10000);
+let timeLeft = 10;
+let countdown = setInterval(function() {
+timeLeft--;
+document.getElementById("timer").innerText = "Time left: "+ timeLeft;
+if (timeLeft === 0){
+	clearInterval(countdown);
+}
+}, 1000);
+document.getElementById("score").style.color = "red";
+document.body.style.backgroundColor = "lightblue";
+
+</script>
+
+</body>
+</html>
